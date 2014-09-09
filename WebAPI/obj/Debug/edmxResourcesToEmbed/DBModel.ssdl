@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ManagementDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ManagementDatabase.dbo.ApiKeys' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ApiKeys">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="Key" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Key" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CompletedSurveys">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="SurveyId" Type="int" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Questions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Question" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ManagementDatabase.dbo.Results' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Results">
+    <Key>
+      <PropertyRef Name="CompletedSurveyId" />
+      <PropertyRef Name="QuestionId" />
+      <PropertyRef Name="Answer" />
+    </Key>
+    <Property Name="CompletedSurveyId" Type="int" Nullable="false" />
+    <Property Name="QuestionId" Type="int" Nullable="false" />
+    <Property Name="Answer" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ManagementDatabase.dbo.SurveyQuestions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="SurveyQuestions">
+    <Key>
+      <PropertyRef Name="SurveyId" />
+      <PropertyRef Name="QuestionsId" />
+      <PropertyRef Name="PageNum" />
+      <PropertyRef Name="OrderNum" />
+    </Key>
+    <Property Name="SurveyId" Type="int" Nullable="false" />
+    <Property Name="QuestionsId" Type="int" Nullable="false" />
+    <Property Name="PageNum" Type="int" Nullable="false" />
+    <Property Name="OrderNum" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Surveys">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nchar" MaxLength="25" Nullable="false" />
+    <Property Name="Delay" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nchar" MaxLength="25" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Admin" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="ManagementDatabaseModelStoreContainer">
+    <EntitySet Name="CompletedSurveys" EntityType="Self.CompletedSurveys" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Questions" EntityType="Self.Questions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Surveys" EntityType="Self.Surveys" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ApiKeys" EntityType="Self.ApiKeys" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ApiKeys].[UserId] AS [UserId], 
+    [ApiKeys].[Key] AS [Key]
+    FROM [dbo].[ApiKeys] AS [ApiKeys]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Results" EntityType="Self.Results" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Results].[CompletedSurveyId] AS [CompletedSurveyId], 
+    [Results].[QuestionId] AS [QuestionId], 
+    [Results].[Answer] AS [Answer]
+    FROM [dbo].[Results] AS [Results]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="SurveyQuestions" EntityType="Self.SurveyQuestions" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [SurveyQuestions].[SurveyId] AS [SurveyId], 
+    [SurveyQuestions].[QuestionsId] AS [QuestionsId], 
+    [SurveyQuestions].[PageNum] AS [PageNum], 
+    [SurveyQuestions].[OrderNum] AS [OrderNum]
+    FROM [dbo].[SurveyQuestions] AS [SurveyQuestions]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

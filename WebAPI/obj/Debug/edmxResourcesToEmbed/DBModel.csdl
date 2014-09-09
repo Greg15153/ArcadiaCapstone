@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ManagementDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CompletedSurvey">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="SurveyId" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Survey" Relationship="ManagementDatabaseModel.SurveyCompletedSurvey" FromRole="CompletedSurvey" ToRole="Survey" />
+    <NavigationProperty Name="User" Relationship="ManagementDatabaseModel.UserCompletedSurvey" FromRole="CompletedSurvey" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Question1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="SurveyQuestion" Relationship="ManagementDatabaseModel.SurveyQuestionQuestion" FromRole="Question" ToRole="SurveyQuestion" />
+    <NavigationProperty Name="Results" Relationship="ManagementDatabaseModel.QuestionResult" FromRole="Question" ToRole="Result" />
+  </EntityType>
+  <EntityType Name="Survey">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="25" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Delay" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SurveyQuestions" Relationship="ManagementDatabaseModel.SurveySurveyQuestion" FromRole="Survey" ToRole="SurveyQuestion" />
+    <NavigationProperty Name="CompletedSurveys" Relationship="ManagementDatabaseModel.SurveyCompletedSurvey" FromRole="Survey" ToRole="CompletedSurvey" />
+    <NavigationProperty Name="Results" Relationship="ManagementDatabaseModel.SurveyResult" FromRole="Survey" ToRole="Result" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="25" FixedLength="true" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Admin" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ApiKeys" Relationship="ManagementDatabaseModel.UserApiKey" FromRole="User" ToRole="ApiKey" />
+    <NavigationProperty Name="CompletedSurveys" Relationship="ManagementDatabaseModel.UserCompletedSurvey" FromRole="User" ToRole="CompletedSurvey" />
+  </EntityType>
+  <EntityType Name="ApiKey">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="Key" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Key" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="ManagementDatabaseModel.UserApiKey" FromRole="ApiKey" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Result">
+    <Key>
+      <PropertyRef Name="CompletedSurveyId" />
+      <PropertyRef Name="QuestionId" />
+      <PropertyRef Name="Answer" />
+    </Key>
+    <Property Name="CompletedSurveyId" Type="Int32" Nullable="false" />
+    <Property Name="QuestionId" Type="Int32" Nullable="false" />
+    <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Survey" Relationship="ManagementDatabaseModel.SurveyResult" FromRole="Result" ToRole="Survey" />
+    <NavigationProperty Name="Question" Relationship="ManagementDatabaseModel.QuestionResult" FromRole="Result" ToRole="Question" />
+  </EntityType>
+  <EntityType Name="SurveyQuestion">
+    <Key>
+      <PropertyRef Name="SurveyId" />
+      <PropertyRef Name="QuestionsId" />
+      <PropertyRef Name="PageNum" />
+      <PropertyRef Name="OrderNum" />
+    </Key>
+    <Property Name="SurveyId" Type="Int32" Nullable="false" />
+    <Property Name="QuestionsId" Type="Int32" Nullable="false" />
+    <Property Name="PageNum" Type="Int32" Nullable="false" />
+    <Property Name="OrderNum" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Survey" Relationship="ManagementDatabaseModel.SurveySurveyQuestion" FromRole="SurveyQuestion" ToRole="Survey" />
+    <NavigationProperty Name="Questions" Relationship="ManagementDatabaseModel.SurveyQuestionQuestion" FromRole="SurveyQuestion" ToRole="Question" />
+  </EntityType>
+  <EntityContainer Name="ManagementDatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CompletedSurveys" EntityType="Self.CompletedSurvey" />
+    <EntitySet Name="Questions" EntityType="Self.Question" />
+    <EntitySet Name="Surveys" EntityType="Self.Survey" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="ApiKeys" EntityType="Self.ApiKey" />
+    <EntitySet Name="Results" EntityType="Self.Result" />
+    <EntitySet Name="SurveyQuestions" EntityType="Self.SurveyQuestion" />
+    <AssociationSet Name="UserApiKey" Association="ManagementDatabaseModel.UserApiKey">
+      <End Role="User" EntitySet="Users" />
+      <End Role="ApiKey" EntitySet="ApiKeys" />
+    </AssociationSet>
+    <AssociationSet Name="SurveySurveyQuestion" Association="ManagementDatabaseModel.SurveySurveyQuestion">
+      <End Role="Survey" EntitySet="Surveys" />
+      <End Role="SurveyQuestion" EntitySet="SurveyQuestions" />
+    </AssociationSet>
+    <AssociationSet Name="SurveyQuestionQuestion" Association="ManagementDatabaseModel.SurveyQuestionQuestion">
+      <End Role="SurveyQuestion" EntitySet="SurveyQuestions" />
+      <End Role="Question" EntitySet="Questions" />
+    </AssociationSet>
+    <AssociationSet Name="SurveyCompletedSurvey" Association="ManagementDatabaseModel.SurveyCompletedSurvey">
+      <End Role="Survey" EntitySet="Surveys" />
+      <End Role="CompletedSurvey" EntitySet="CompletedSurveys" />
+    </AssociationSet>
+    <AssociationSet Name="SurveyResult" Association="ManagementDatabaseModel.SurveyResult">
+      <End Role="Survey" EntitySet="Surveys" />
+      <End Role="Result" EntitySet="Results" />
+    </AssociationSet>
+    <AssociationSet Name="QuestionResult" Association="ManagementDatabaseModel.QuestionResult">
+      <End Role="Question" EntitySet="Questions" />
+      <End Role="Result" EntitySet="Results" />
+    </AssociationSet>
+    <AssociationSet Name="UserCompletedSurvey" Association="ManagementDatabaseModel.UserCompletedSurvey">
+      <End Role="User" EntitySet="Users" />
+      <End Role="CompletedSurvey" EntitySet="CompletedSurveys" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="UserApiKey">
+    <End Type="ManagementDatabaseModel.User" Role="User" Multiplicity="1" />
+    <End Type="ManagementDatabaseModel.ApiKey" Role="ApiKey" Multiplicity="1" />
+  </Association>
+  <Association Name="SurveySurveyQuestion">
+    <End Type="ManagementDatabaseModel.Survey" Role="Survey" Multiplicity="1" />
+    <End Type="ManagementDatabaseModel.SurveyQuestion" Role="SurveyQuestion" Multiplicity="*" />
+  </Association>
+  <Association Name="SurveyQuestionQuestion">
+    <End Type="ManagementDatabaseModel.SurveyQuestion" Role="SurveyQuestion" Multiplicity="*" />
+    <End Type="ManagementDatabaseModel.Question" Role="Question" Multiplicity="*" />
+  </Association>
+  <Association Name="SurveyCompletedSurvey">
+    <End Type="ManagementDatabaseModel.Survey" Role="Survey" Multiplicity="0..1" />
+    <End Type="ManagementDatabaseModel.CompletedSurvey" Role="CompletedSurvey" Multiplicity="*" />
+  </Association>
+  <Association Name="SurveyResult">
+    <End Type="ManagementDatabaseModel.Survey" Role="Survey" Multiplicity="0..1" />
+    <End Type="ManagementDatabaseModel.Result" Role="Result" Multiplicity="*" />
+  </Association>
+  <Association Name="QuestionResult">
+    <End Type="ManagementDatabaseModel.Question" Role="Question" Multiplicity="1" />
+    <End Type="ManagementDatabaseModel.Result" Role="Result" Multiplicity="*" />
+  </Association>
+  <Association Name="UserCompletedSurvey">
+    <End Type="ManagementDatabaseModel.User" Role="User" Multiplicity="1" />
+    <End Type="ManagementDatabaseModel.CompletedSurvey" Role="CompletedSurvey" Multiplicity="*" />
+  </Association>
+</Schema>

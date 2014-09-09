@@ -36,6 +36,10 @@ namespace WebAPI.Models
                     this.Response = 404;
                     this.Message = "Resource not found";
                     break;
+                case "UserExists":
+                    this.Response = 200;
+                    this.Message = "Username already exists";
+                    break;
             }
         }
 

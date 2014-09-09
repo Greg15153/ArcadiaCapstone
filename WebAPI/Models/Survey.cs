@@ -6,26 +6,24 @@ namespace WebAPI.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class User
+    public partial class Survey
     {
-        public User()
+        public Survey()
         {
             CompletedSurveys = new HashSet<CompletedSurvey>();
-            ApiKeys = new HashSet<ApiKey>();
+            SurveyQuestions = new HashSet<SurveyQuestion>();
         }
 
         public int Id { get; set; }
 
-        [StringLength(25)]
-        public string Username { get; set; }
-
         [Required]
-        public string Password { get; set; }
+        [StringLength(50)]
+        public string Title { get; set; }
 
-        public int Admin { get; set; }
+        public int Delay { get; set; }
 
         public virtual ICollection<CompletedSurvey> CompletedSurveys { get; set; }
 
-        public virtual ICollection<ApiKey> ApiKeys { get; set; }
+        public virtual ICollection<SurveyQuestion> SurveyQuestions { get; set; }
     }
 }
