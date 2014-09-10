@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,21 +13,24 @@ namespace WebAPI.Controllers
 {
     public class UserController : ApiController
     {
-        
+        private DB db = new DB();
+        dynamic result = new JObject();
+
         // Index page from GET -> Not found
         // GET /User
         [HttpGet]
         public IHttpActionResult Index()
         {
-            return Json(new Error("MethodNotFound"));
+            result.Add("Response", 401);
+            result.Add("Message", "Unauthorized access");
+            return Ok(result);
         }
-        
-        // Register User ->
+
+        // Registers a user
         // POST /User
         [HttpPost]
         public IHttpActionResult Post(User user)
         {
-            DB db = new DB();
 
             if (db.Users.Where(o => o.Username.Equals(user.Username)).Count() == 0) //Checks to see if user already exists
             {
@@ -34,57 +39,53 @@ namespace WebAPI.Controllers
             }
             else
                 return Json(new Error("UserExists"));
-    
+
 
         }
 
-        // Gets a user's information based off ID, if no/incorrect apiKey shoot errors, if not return user data
-        // GET /User/id?apiKey=
+        // Gets a user's information based off ID: Id, Subject, Username, Admin, ApiKey
+        // GET /User/ID?apiKey=KEY
         [HttpGet]
         public IHttpActionResult GetUser(int id, string apiKey = "")
         {
-            using (DB db = new DB()) {
-                try
-                {
-                    return Json(db.Users.Where(o => o.Id == id).Single());
-                }
-                catch
-                {
-                    return Json("Failed");
-                }
-
-            }
-            /*
-            if (apiKey == "")
-                return Json(new Error("MissingAPI"));
-            else if(apiKey != "12345")
-                return Json(new Error("UnAuthorized"));
-
-            User user = new User();
-     
-            switch (id)
+            try //Try to pull ApiKey from Database, if not found return Unauthorized
             {
-                case 0:
-                    user.Id = 0;
-                    user.Username = "Greg";
-                    user.Password = "Password123";
-                    user.Admin = 1;
-                    break;
-                case 1:
-                    user.Id = 1;
-                    user.Username = "Mike";
-                    user.Password = "Password123";
-                    user.Admin = 0;
-                    break;
-                default:
-                    return Json(new Error("ResourceNotFound"));
+                db.ApiKeys.Where(o => o.Key == apiKey).Single();
+            }
+            catch
+            {
+                result.Add("Response", 401);
+                result.Add("Message", "Unauthorized access");
+                return Ok(result);
             }
 
-            return Json(user);
-             */
-            return Json("testing..");
+            try //Try to pull User from Database, if not found return 404
+            {
+                var user = db.Users.Where(o => o.Id == id).Single();
+         
+                result.Add("Response", 200);
+                result.User = new JObject();
+
+                result.User.Add("Id", user.Id);
+
+                if (user.subject == 0)
+                    result.User.Add("Subject", false);
+                else
+                    result.User.Add("Subject", true);
+
+                result.User.Add("Username", user.Username);
+                result.User.Add("Admin", user.Admin);
+                result.User.Add("ApiKey", user.ApiKeys.Single().Key);
+                return Ok(result);
+            }
+            catch
+            {
+                result.Add("Response", 400);
+                result.Add("User", "Not found");
+
+                return Ok(result);
+            }
+
         }
-
-
     }
 }

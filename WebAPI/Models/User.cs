@@ -24,6 +24,8 @@ namespace WebAPI.Models
 
         public int Admin { get; set; }
 
+        public int subject { get; set; }
+
         public virtual ICollection<CompletedSurvey> CompletedSurveys { get; set; }
 
         public virtual ICollection<ApiKey> ApiKeys { get; set; }

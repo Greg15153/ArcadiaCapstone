@@ -128,7 +128,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\" />
     <Folder Include="Content\" />
-    <Folder Include="DAL\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -140,9 +140,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201409091823316_InitialCreate.cs" />
+    <Compile Include="Migrations\201409091823316_InitialCreate.Designer.cs">
+      <DependentUpon>201409091823316_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409101917316_AddSubjectToUser.cs" />
+    <Compile Include="Migrations\201409101917316_AddSubjectToUser.Designer.cs">
+      <DependentUpon>201409101917316_AddSubjectToUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApiKey.cs" />
     <Compile Include="Models\CompletedSurvey.cs" />
     <Compile Include="Models\DB.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Error.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\Result.cs" />
@@ -192,6 +202,14 @@
       <SubType>Designer</SubType>
     </Content>
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201409091823316_InitialCreate.resx">
+      <DependentUpon>201409091823316_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409101917316_AddSubjectToUser.resx">
+      <DependentUpon>201409101917316_AddSubjectToUser.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
