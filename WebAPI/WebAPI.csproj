@@ -128,7 +128,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\" />
     <Folder Include="Content\" />
-    <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -140,6 +139,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ApiKey.cs" />
+    <Compile Include="Helpers\Authorize.cs" />
     <Compile Include="Migrations\201409091823316_InitialCreate.cs" />
     <Compile Include="Migrations\201409091823316_InitialCreate.Designer.cs">
       <DependentUpon>201409091823316_InitialCreate.cs</DependentUpon>
@@ -147,6 +148,10 @@
     <Compile Include="Migrations\201409101917316_AddSubjectToUser.cs" />
     <Compile Include="Migrations\201409101917316_AddSubjectToUser.Designer.cs">
       <DependentUpon>201409101917316_AddSubjectToUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409110317418_UpdatedUserValues.cs" />
+    <Compile Include="Migrations\201409110317418_UpdatedUserValues.Designer.cs">
+      <DependentUpon>201409110317418_UpdatedUserValues.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApiKey.cs" />
@@ -209,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201409101917316_AddSubjectToUser.resx">
       <DependentUpon>201409101917316_AddSubjectToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409110317418_UpdatedUserValues.resx">
+      <DependentUpon>201409110317418_UpdatedUserValues.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

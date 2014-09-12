@@ -16,14 +16,18 @@ namespace WebAPI.Models
 
         public int Id { get; set; }
 
+        [Required]
         [StringLength(25)]
         public string Username { get; set; }
 
         [Required]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
+        [Required]
         public int Admin { get; set; }
 
+        [Required]
         public int subject { get; set; }
 
         public virtual ICollection<CompletedSurvey> CompletedSurveys { get; set; }

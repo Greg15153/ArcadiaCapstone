@@ -109,3 +109,4 @@ C:\Users\gelli_000\Documents\Visual Studio 2013\Projects\ArcadiaCapstone\WebAPI\
 C:\Users\gelli_000\Documents\Visual Studio 2013\Projects\ArcadiaCapstone\WebAPI\obj\Debug\WebAPI.Migrations.InitialCreate.resources
 C:\Users\gelli_000\Documents\Visual Studio 2013\Projects\ArcadiaCapstone\WebAPI\obj\Debug\WebAPI.csproj.GenerateResource.Cache
 C:\Users\gelli_000\Documents\Visual Studio 2013\Projects\ArcadiaCapstone\WebAPI\obj\Debug\WebAPI.Migrations.AddSubjectToUser.resources
+C:\Users\gelli_000\Documents\Visual Studio 2013\Projects\ArcadiaCapstone\WebAPI\obj\Debug\WebAPI.Migrations.UpdatedUserValues.resources

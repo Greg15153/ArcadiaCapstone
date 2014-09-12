@@ -12,27 +12,18 @@ namespace WebAPI.Models
     public class Message
     {
         public int Response { get; set; }
-        public Object Msg { get; set; }
+        public string Msg { get; set; }
 
-        public Message()
-        {
-
-        }
-
-        public Message(string type, Object obj){
+        public Message(string type){
             switch (type)
             {
-                case "Success":
-                    this.Response = 200;
-                    this.Msg = obj;
-                    break;
                 case "UserExists":
                     this.Response = 200;
                     this.Msg = "Username already exists";
                     break;
-                case "UnAuthorized":
+                case "Unauthorized":
                     this.Response = 401;
-                    this.Msg = "Not Authorized to pull this data";
+                    this.Msg = "Unauthorized";
                     break;
                 case "MissingAPI":
                     this.Response = 401;
