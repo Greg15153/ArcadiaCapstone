@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="gellis-001-site1" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\GregEllis\\Documents\\Visual\ Studio\ 2013\\Projects\\ArcadiaCapstone\\API\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\GregEllis\\Documents\\Visual\ Studio\ 2013\\Projects\\ArcadiaCapstone\\API\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="Database-Web.config Connection String" description="Database Connection String used in web.config by the application to access the database." value="data source=(localdb)\v11.0;initial catalog=api;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\GregEllis\\Documents\\Visual\ Studio\ 2013\\Projects\\ArcadiaCapstone\\API\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Database']/@connectionString" />
+  </parameter>
+</parameters>

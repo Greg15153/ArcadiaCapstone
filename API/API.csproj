@@ -29,6 +29,11 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PublishDatabaseSettings>
+      <Objects>
+      </Objects>
+    </PublishDatabaseSettings>
+    <IncludeIisSettings>true</IncludeIisSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -146,8 +151,6 @@
     <Compile Include="Models\ApiKey.cs" />
     <Compile Include="Models\CompletedSurvey.cs" />
     <Compile Include="Models\DB.cs" />
-    <Compile Include="Models\Helpers\IRepository.cs" />
-    <Compile Include="Models\Helpers\MySqlDB.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\Result.cs" />
     <Compile Include="Models\Survey.cs" />
@@ -161,13 +164,17 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\GregPC.pubxml" />
+    <None Include="Properties\PublishProfiles\WebHost.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

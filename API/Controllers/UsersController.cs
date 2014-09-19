@@ -17,7 +17,6 @@ namespace API.Controllers
     public class UsersController : ApiController
     {
         private DB db = new DB();
-        private Authorizer auth = new Authorizer();
         private dynamic result = new JObject();
        
         //
@@ -27,10 +26,7 @@ namespace API.Controllers
         // GET: index
         public IHttpActionResult Get()
         {
-            result.Add("Status", 501);
-            result.Add("Message", "Not implemented");
-
-            return Json(result);
+            return StatusCode(HttpStatusCode.NotImplemented);
         }
 
         // GET: api/Users/5
@@ -38,32 +34,21 @@ namespace API.Controllers
         public IHttpActionResult GetUser(int id, string ApiKey = "")
         {
 
-            dynamic oAuth = auth.authorize("Admin", ApiKey);
-
-            if (oAuth.Status == 401)
-                return Json(oAuth);
-
+            if (Authorizer.authorize("Admin", ApiKey) == 401)
+                return Unauthorized();
 
             User user = db.Users.Find(id);
 
             if (user == null)
-            {
-                result.Add("Status", 404);
-                result.Add("Message", "User not found");
-                return Json(result);
-            }
+                return NotFound();
 
-            result.Add("Status", 200);
-            
-            result.User = new JObject();
+            result.Add("Id", user.Id);
+            result.Add("Username", user.Username);
+            result.Add("Admin", user.Admin);
+            result.Add("Subject", user.Subject);
+            result.Add("ApiKey", user.ApiKey.Key);
 
-            result.User.Add("Id", user.Id);
-            result.User.Add("Username", user.Username);
-            result.User.Add("Admin", user.Admin);
-            result.User.Add("Subject", user.Subject);
-            result.User.Add("ApiKey", user.ApiKey.Key);
-
-            return Json(result);
+            return Ok(result);
         }
 
         [ResponseType(typeof(void))]
@@ -71,33 +56,24 @@ namespace API.Controllers
         public IHttpActionResult SignIn(User user)
         {
             if (!UserExists(user.Username))
-            {
-                result.Add("Status", 404);
-                result.Add("Message", "User not found");
-                return Json(result);
-            }
+                return NotFound();
 
             user.Password = Secure.encryptPass(user.Username, user.Password);
 
                 if (db.Users.Count(o => o.Username == user.Username && o.Password == user.Password) > 0)
                 {
                     User userInfo = db.Users.Where(o => o.Username == user.Username).Single();
-                    result.Add("Status", 200);
-                    result.User = new JObject();
 
-                    result.User.Add("Id", userInfo.Id);
-                    result.User.Add("Username", userInfo.Username);
-                    result.User.Add("Admin", userInfo.Admin);
-                    result.User.Add("Subject", userInfo.Subject);
-                    result.User.Add("ApiKey", userInfo.ApiKey.Key);
+                    result.Add("Id", userInfo.Id);
+                    result.Add("Username", userInfo.Username);
+                    result.Add("Admin", userInfo.Admin);
+                    result.Add("Subject", userInfo.Subject);
+                    result.Add("ApiKey", userInfo.ApiKey.Key);
 
-                    return Json(result);
+                    return Ok(result);
                 }
 
-
-            result.Add("Status", 422);
-            result.Add("Message", "Incorrect password");
-            return Json(result);
+            return Unauthorized();
         }
 
         // Registers new member, requires all details
@@ -106,27 +82,18 @@ namespace API.Controllers
         [HttpPost]
         public IHttpActionResult RegisterUser(User user, String ApiKey)
         {
-            dynamic oAuth = auth.authorize("Admin", ApiKey);
+            if (Authorizer.authorize("Admin", ApiKey) == 401)
+                return Unauthorized();
 
-            if (oAuth.Status == 401)
-                return Json(oAuth);
 
             if (UserExists(user.Username)) //Checks if username exists
-            {
-                result.Add("Status", 409);
-                result.Add("Message", "Username already exists");
-                return Json(result);
-            }
+                return Conflict();
 
            //Check password then encrypt
            user.Password = Secure.encryptPass(user.Username, user.Password);
 
            if (user.Password == "Too short")
-           {
-               result.Add("Status", 409);
-               result.Add("Message", "Password is too short");
-               return Json(result);
-           }
+               return BadRequest();
 
            //Generate API Key
             db.Users.Add(user);
@@ -137,27 +104,22 @@ namespace API.Controllers
             db.ApiKeys.Add(newKey);
             db.SaveChanges();
 
-            result.Add("Status", 201);
-            result.Add("Message", "User successfully created");
-            return Json(result);
+            return StatusCode(HttpStatusCode.Created);
         }
 
+        /*
         //Updates user, requires all fields to be filled. All will be updated even if not changed
         // PUT: api/Users/5
         [ResponseType(typeof(void))]
         [HttpPut]
-        public IHttpActionResult PutUser(int id, User user, String ApiKey = "")
+        public HttpResponseMessage PutUser(int id, User user, String ApiKey = "")
         {
-            dynamic oAuth = auth.authorize("Admin", ApiKey);
-
-            if (oAuth.Status == 401)
-                return Json(oAuth);
-
+            if (Authorizer.authorize("Admin", ApiKey) == 401)
+                return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "Unauthorized");
 
             if (!ModelState.IsValid)
             {
-                
-                return BadRequest(ModelState);
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
 
             if (id != user.Id)
@@ -191,6 +153,8 @@ namespace API.Controllers
             result.Add("Message", "User modified succesfully");
             return Json(result);
         }
+
+        */
 
         protected override void Dispose(bool disposing)
         {

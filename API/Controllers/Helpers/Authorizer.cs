@@ -9,55 +9,44 @@ namespace API.Controllers.Helpers
 {
     public class Authorizer
     {
-        public dynamic authorize(String level, String apiKey)
+        public static int authorize(String level, String apiKey)
         {
-            dynamic result = new JObject();
-            Boolean check;
+            int status;
 
             switch (level)
             {
-                case "Admin": check = verifyAdmin(apiKey); break;
-                case "User": check = verifyApiKey(apiKey); break;
-                default : check = verifyAdmin(apiKey);break;
+                case "Admin": status = verifyAdmin(apiKey); break;
+                case "User": status = verifyApiKey(apiKey); break;
+                default: status = verifyAdmin(apiKey); break;
             }
 
-            if (check)
-            {
-                result.Add("Status", 200);
-                result.Add("Message", "Authorized user");
-            }
-            else
-            {
-                result.Add("Status", 401);
-                result.Add("Message", "Unauthorized user");
-            }
-
-            return result;
+            return status;
         }
+
         //Verifys if ApiKey is in database
-        private Boolean verifyApiKey(String apiKey)
+        private static int verifyApiKey(String apiKey)
         {
             try
             {
                 ApiKey info = getApiKeyInfo(apiKey);
                 if (info.Key == "null")
-                    return false;
+                    return 401;
 
-                return true;
+                return 200;
             }
             catch
             {
-                return false;
+                return 401;
             }
 
         }
 
-        private Boolean verifyAdmin(String apiKey)
+        private static int verifyAdmin(String apiKey)
         {
             ApiKey info = getApiKeyInfo(apiKey);
 
             if (info.Key == "null")
-                return false;
+                return 401;
 
             try
             {
@@ -65,18 +54,18 @@ namespace API.Controllers.Helpers
                 {
 
                     if (db.Users.Find(info.UserId).Admin > 0)
-                        return true;
+                        return 200;
                     else
-                        return false;
+                        return 401;
                 }
             }
             catch
             {
-                return false;
+                return 401;
             }
         }
 
-        private ApiKey getApiKeyInfo(String apiKey)
+        private static ApiKey getApiKeyInfo(String apiKey)
         {
             ApiKey keyInfo = new ApiKey();
 
