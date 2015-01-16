@@ -1,0 +1,31 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+body{
+	background-color: #9C0606;
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+
+#login{
+	position: absolute;
+	margin: 0px auto;
+	padding: 10px;
+	background-color: #FFFFFF;
+	width: 400px;
+	height: 150px;
+	border: 1px solid black;
+	text-align: center;
+	top: 50%;
+	left: 50%;
+	margin-top: -75px; 
+	margin-left: -200px;
+	box-shadow: 0px 0px 5px #000000;
+}
+
+#login li{
+	list-style-type: none;
+	padding: 5px;
+}

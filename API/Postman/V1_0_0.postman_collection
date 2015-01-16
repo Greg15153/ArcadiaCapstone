@@ -1,0 +1,1047 @@
+{
+	"id": "fdd400ac-3bf2-d4e2-6858-2cb3b1eba381",
+	"name": "Master",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"id": "40a1543a-11ff-a21b-ee3f-ec116bdeb2f0",
+			"name": "Question",
+			"description": "",
+			"order": [
+				"09dfd6ff-325f-aaf1-aa5c-408584e5efc2",
+				"59901231-948a-935c-8346-509cf3b6e86f",
+				"06b34b8b-2e89-b5f9-0f52-becfb9b47e67",
+				"d326d184-39e3-1e6e-19d2-0f0e9d817913",
+				"72ef0989-bbf5-2d7d-1bc5-355488924c30",
+				"b4c93faf-dcb7-7418-e2a2-edc094f0413a",
+				"9bbd9ac3-e44f-9615-f09d-e055d64b3df7",
+				"78add025-42aa-a273-8529-00d441754090"
+			],
+			"collection_name": "Master",
+			"collection_id": "fdd400ac-3bf2-d4e2-6858-2cb3b1eba381"
+		},
+		{
+			"id": "1edb8b4f-ba89-d3c0-afc2-a18c3b0d27f8",
+			"name": "Survey",
+			"description": "",
+			"order": [
+				"618bb26b-62bd-065c-0864-ebaa73c05d75",
+				"dcb0a7ab-3253-4533-6b5b-fdc62ff41e36",
+				"761e22a6-4bd5-d85e-22c2-35d6c9c7b469",
+				"a503a0cf-8571-13a7-e87c-8076a7885659"
+			],
+			"collection_name": "Master",
+			"collection_id": "fdd400ac-3bf2-d4e2-6858-2cb3b1eba381"
+		},
+		{
+			"id": "a6ea5a50-96da-b7c8-44d7-e9b5d3c6692f",
+			"name": "User",
+			"description": "",
+			"order": [
+				"b893c598-3a0e-1866-98d6-49e31ea00f3a",
+				"ec7c2c92-a342-366f-9694-2941d29d63fd",
+				"dd68e740-9cfb-5895-0f3a-f3ad53cb50dc",
+				"7232639f-f816-361c-89c8-bbdee788a6e9",
+				"fa88ca7f-38f9-ddcf-8451-d789cecd72c5",
+				"faec8817-37ad-397f-11a5-828d9758e4be",
+				"3ab73b42-d261-ae46-ad2e-9105862ec1dd",
+				"acfcb373-13ce-d517-243c-9a26fc80577a",
+				"12a640f3-0646-dca2-8921-5a05a521d19a",
+				"59dfffa0-54ae-9f34-d650-90b3b494a06c"
+			],
+			"collection_name": "Master",
+			"collection_id": "fdd400ac-3bf2-d4e2-6858-2cb3b1eba381"
+		}
+	],
+	"timestamp": 1420229241654,
+	"synced": false,
+	"remoteLink": "",
+	"requests": [
+		{
+			"id": "06b34b8b-2e89-b5f9-0f52-becfb9b47e67",
+			"headers": "",
+			"url": "{{url}}/question.php",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "r",
+					"value": "create",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "ApiKey",
+					"value": "{{master}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "type",
+					"value": "multipleChoice",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "question",
+					"value": "Who was the first president of the United States of America?",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "choices[0]",
+					"value": "George Washington",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "choices[1]",
+					"value": "Greg Ellis",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "choices[2]",
+					"value": "Christian Neal",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "choices[3]",
+					"value": "Yanxia Jia",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "choices[4]",
+					"value": "Tim Burton",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1420526744572,
+			"name": "Create Question - Multiple choice",
+			"description": "",
+			"collectionId": "fdd400ac-3bf2-d4e2-6858-2cb3b1eba381",
+			"responses": [],
+			"synced": false
+		},
+		{
+			"id": "09dfd6ff-325f-aaf1-aa5c-408584e5efc2",
+			"headers": "",
+			"url": "{{url}}/question.php?all=true&ApiKey={{master}}",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "GET",
+			"data": [
+				{
+					"key": "ApiKey",
+					"value": "{{master}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "type",
+					"value": "multipleChoice",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "question",
+					"value": "What are your favorite colors?",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "r",
+					"value": "create",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "choices[0]",
+					"value": "Blue",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "choices[1]",
+					"value": "Red",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "choices[2]",
+					"value": "Green",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "choices[3]",
+					"value": "White",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "Get All Questions",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1420517457369,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collectionId": "fdd400ac-3bf2-d4e2-6858-2cb3b1eba381",
+			"synced": false
+		},
+		{
+			"id": "12a640f3-0646-dca2-8921-5a05a521d19a",
+			"headers": "",
+			"url": "{{url}}/user.php?user=1",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "POST",
+			"data": [
+				{
+					"key": "ApiKey",
+					"value": "{{master}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "r",
+					"value": "assign",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "survey",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "Assign Survey to Master",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1420230670379,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collectionId": "fdd400ac-3bf2-d4e2-6858-2cb3b1eba381",
+			"synced": false
+		},
+		{
+			"id": "3ab73b42-d261-ae46-ad2e-9105862ec1dd",
+			"headers": "",
+			"url": "{{url}}/user.php",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "POST",
+			"data": [
+				{
+					"key": "r",
+					"value": "login",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "username",
+					"value": "GEllis",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "Password123",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "Login Subject User",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1420229448587,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collectionId": "fdd400ac-3bf2-d4e2-6858-2cb3b1eba381",
+			"synced": false
+		},
+		{
+			"id": "59901231-948a-935c-8346-509cf3b6e86f",
+			"headers": "",
+			"url": "{{url}}/question.php?id=1&ApiKey={{master}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [
+				{
+					"key": "ApiKey",
+					"value": "{{master}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "r",
+					"value": "assign",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "survey",
+					"value": "3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "question",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1420525913023,
+			"name": "Get Question by Id",
+			"description": "",
+			"collectionId": "fdd400ac-3bf2-d4e2-6858-2cb3b1eba381",
+			"responses": [],
+			"synced": false
+		},
+		{
+			"id": "59dfffa0-54ae-9f34-d650-90b3b494a06c",
+			"headers": "",
+			"url": "{{url}}/user.php?user=2",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "POST",
+			"data": [
+				{
+					"key": "ApiKey",
+					"value": "{{master}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "r",
+					"value": "assign",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "survey",
+					"value": "3",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "Assign Survey to Subject",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1420230690523,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collectionId": "fdd400ac-3bf2-d4e2-6858-2cb3b1eba381",
+			"synced": false
+		},
+		{
+			"id": "618bb26b-62bd-065c-0864-ebaa73c05d75",
+			"headers": "",
+			"url": "{{url}}/survey.php?all=true&ApiKey={{master}}",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "GET",
+			"data": [
+				{
+					"key": "r",
+					"value": "login",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "username",
+					"value": "Master",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "Password123",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "Get All Surveys",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1420229636393,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collectionId": "fdd400ac-3bf2-d4e2-6858-2cb3b1eba381",
+			"synced": false
+		},
+		{
+			"id": "7232639f-f816-361c-89c8-bbdee788a6e9",
+			"headers": "",
+			"url": "{{url}}/user.php",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "POST",
+			"data": [
+				{
+					"key": "r",
+					"value": "login",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "username",
+					"value": "Master",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "Password123",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "Login Master user",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1420229510216,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collectionId": "fdd400ac-3bf2-d4e2-6858-2cb3b1eba381",
+			"synced": false
+		},
+		{
+			"id": "72ef0989-bbf5-2d7d-1bc5-355488924c30",
+			"headers": "",
+			"url": "{{url}}/question.php",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "POST",
+			"data": [
+				{
+					"key": "ApiKey",
+					"value": "{{master}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "r",
+					"value": "assign",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "survey",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "question",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "page",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "Assign Question",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1420519991504,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collectionId": "fdd400ac-3bf2-d4e2-6858-2cb3b1eba381",
+			"synced": false
+		},
+		{
+			"id": "761e22a6-4bd5-d85e-22c2-35d6c9c7b469",
+			"headers": "",
+			"url": "{{url}}/survey.php?name=Survey%20One&ApiKey={{master}}",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "GET",
+			"data": [
+				{
+					"key": "r",
+					"value": "login",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "username",
+					"value": "Master",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "Password123",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "Get Survey by Name",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1420229688407,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collectionId": "fdd400ac-3bf2-d4e2-6858-2cb3b1eba381",
+			"synced": false
+		},
+		{
+			"id": "78add025-42aa-a273-8529-00d441754090",
+			"headers": "",
+			"url": "{{url}}/question.php",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "POST",
+			"data": [
+				{
+					"key": "ApiKey",
+					"value": "{{master}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "r",
+					"value": "assign",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "survey",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "question",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "page",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "Assign Question - No order",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1420520002207,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collectionId": "fdd400ac-3bf2-d4e2-6858-2cb3b1eba381",
+			"synced": false
+		},
+		{
+			"id": "9bbd9ac3-e44f-9615-f09d-e055d64b3df7",
+			"headers": "",
+			"url": "{{url}}/question.php",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "POST",
+			"data": [
+				{
+					"key": "ApiKey",
+					"value": "{{master}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "r",
+					"value": "assign",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "survey",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "question",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "Assign Question - No page",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1420519980920,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collectionId": "fdd400ac-3bf2-d4e2-6858-2cb3b1eba381",
+			"synced": false
+		},
+		{
+			"id": "a503a0cf-8571-13a7-e87c-8076a7885659",
+			"headers": "",
+			"url": "{{url}}/survey.php",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "POST",
+			"data": [
+				{
+					"key": "ApiKey",
+					"value": "{{master}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "r",
+					"value": "create",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "Survey One",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "description",
+					"value": "This is the first survey ever to be created. It is a beautiful thing. Cheerish it with your heart and soul.",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "delay",
+					"value": "0",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "Create Survey",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1420229807569,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collectionId": "fdd400ac-3bf2-d4e2-6858-2cb3b1eba381",
+			"synced": false
+		},
+		{
+			"id": "acfcb373-13ce-d517-243c-9a26fc80577a",
+			"headers": "",
+			"url": "{{url}}/user.php",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "POST",
+			"data": [
+				{
+					"key": "ApiKey",
+					"value": "{{master}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "r",
+					"value": "create",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "username",
+					"value": "GEllis",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "Password123",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "admin",
+					"value": "0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "subject",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "Create User",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1420229346027,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collectionId": "fdd400ac-3bf2-d4e2-6858-2cb3b1eba381",
+			"synced": false
+		},
+		{
+			"id": "b4c93faf-dcb7-7418-e2a2-edc094f0413a",
+			"headers": "",
+			"url": "{{url}}/question.php",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "ApiKey",
+					"value": "{{master}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "r",
+					"value": "assign",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "survey",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "question",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1420519963922,
+			"name": "Assign Question - No Order / Page",
+			"description": "",
+			"collectionId": "fdd400ac-3bf2-d4e2-6858-2cb3b1eba381",
+			"responses": [],
+			"synced": false
+		},
+		{
+			"id": "b893c598-3a0e-1866-98d6-49e31ea00f3a",
+			"headers": "",
+			"url": "{{url}}/user.php?all=true&ApiKey={{master}}",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"name": "Get All Users",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1420229561983,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collectionId": "fdd400ac-3bf2-d4e2-6858-2cb3b1eba381",
+			"synced": false
+		},
+		{
+			"id": "d326d184-39e3-1e6e-19d2-0f0e9d817913",
+			"headers": "",
+			"url": "{{url}}/question.php",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "r",
+					"value": "create",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "ApiKey",
+					"value": "{{master}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "type",
+					"value": "slider",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "question",
+					"value": "On a scale from 1 - 10, Rate how well you feel",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "start",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "end",
+					"value": "10",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1420532212580,
+			"name": "Create Question - Slider",
+			"description": "",
+			"collectionId": "fdd400ac-3bf2-d4e2-6858-2cb3b1eba381",
+			"responses": [],
+			"synced": false
+		},
+		{
+			"id": "dcb0a7ab-3253-4533-6b5b-fdc62ff41e36",
+			"headers": "",
+			"url": "{{url}}/survey.php?id=1&ApiKey={{master}}",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "GET",
+			"data": [
+				{
+					"key": "r",
+					"value": "login",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "username",
+					"value": "Master",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "Password123",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "Get Survey by Id",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1420229664201,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collectionId": "fdd400ac-3bf2-d4e2-6858-2cb3b1eba381",
+			"synced": false
+		},
+		{
+			"id": "dd68e740-9cfb-5895-0f3a-f3ad53cb50dc",
+			"headers": "",
+			"url": "{{url}}/user.php?username=Master&ApiKey={{master}}",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "GET",
+			"data": [
+				{
+					"key": "r",
+					"value": "login",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "username",
+					"value": "GEllis",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "Password123",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "Get Master user By Username",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1420528174676,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collectionId": "fdd400ac-3bf2-d4e2-6858-2cb3b1eba381",
+			"synced": false
+		},
+		{
+			"id": "ec7c2c92-a342-366f-9694-2941d29d63fd",
+			"headers": "",
+			"url": "{{url}}/user.php?id=1&ApiKey={{master}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1420229389703,
+			"name": "Get Master user By Id",
+			"description": "",
+			"collectionId": "fdd400ac-3bf2-d4e2-6858-2cb3b1eba381",
+			"responses": [],
+			"synced": false
+		},
+		{
+			"id": "fa88ca7f-38f9-ddcf-8451-d789cecd72c5",
+			"headers": "",
+			"url": "{{url}}/user.php?id=2&ApiKey={{master}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1420229395553,
+			"name": "Get Subject user by Id",
+			"description": "",
+			"collectionId": "fdd400ac-3bf2-d4e2-6858-2cb3b1eba381",
+			"responses": [],
+			"synced": false
+		},
+		{
+			"id": "faec8817-37ad-397f-11a5-828d9758e4be",
+			"headers": "",
+			"url": "{{url}}/user.php?username=GEllis&ApiKey={{master}}",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "GET",
+			"data": [
+				{
+					"key": "r",
+					"value": "login",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "username",
+					"value": "GEllis",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "Password123",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "Get Subject user By Username",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1420528188980,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collectionId": "fdd400ac-3bf2-d4e2-6858-2cb3b1eba381",
+			"synced": false
+		}
+	]
+}
